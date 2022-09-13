@@ -30,7 +30,7 @@ func main() {
 	fmt.Printf("The number in z as string is %s and type of same is %T\n", z, z)
 	var a, b = "Russa", true
 	fmt.Printf("The type of a is %T and of b is %T\n", a, b)
-	fmt.Println(other.OtherFunc(3,4))
+	fmt.Println(other.OtherFunc(3, 4))
 	fmt.Println(quote.Glass())
 	fmt.Println(MULTILINE)
 	fmt.Printf("The type of untyped constant Pi is %T\n", Pi)
@@ -46,7 +46,7 @@ func main() {
 	l, x := 55, 14
 	fmt.Println(u, " ", v, " ", w, " ", l, " ", x)
 
-	// Operators (*, &, <-) 
+	// Operators (*, &, <-)
 	// No pointer arithmatic in this language
 	fmt.Printf("The address of u is %x\n", &u)
 	// TODO: Add more here on receive operator
@@ -61,12 +61,12 @@ func main() {
 	EulerSieve()
 	fmt.Println(prime[48437])
 
-	var chMiddle = [3]int{3,4,5}
+	var chMiddle = [3]int{3, 4, 5}
 	newArr := ChangeMiddle(chMiddle)
 	fmt.Println(newArr)
 
 	// Slices
-	slc := []int{3,4,5}
+	slc := []int{3, 4, 5}
 	ChangeSlice(slc)
 	fmt.Println(slc)
 
@@ -87,16 +87,16 @@ func main() {
 	fmt.Println(len(newSlc))
 
 	// MultiDimensional arrays and slices
-	newArr1 := [3][4]int {{1,2,3}, {3,4,5}, {6,7,8}}
-	newArr2 := [3][3]string {{"India", "China", "Russia"}, {"A", "B", "C"}, {"X", "Y", "Z"}}
+	newArr1 := [3][4]int{{1, 2, 3}, {3, 4, 5}, {6, 7, 8}}
+	newArr2 := [3][3]string{{"India", "China", "Russia"}, {"A", "B", "C"}, {"X", "Y", "Z"}}
 	fmt.Println(newArr1)
 	fmt.Println(newArr2)
-	
-	newSlc1 := [][]int {{1,2,3}, {3,4}, {6,7,8}}
+
+	newSlc1 := [][]int{{1, 2, 3}, {3, 4}, {6, 7, 8}}
 	fmt.Println(newSlc1[0][1])
 	fmt.Println(newSlc1[0:2][0:1])
 	var nilSlc []int
-	var nonNilSlc = []int{4,5}
+	var nonNilSlc = []int{4, 5}
 	fmt.Println(nilSlc == nil, " ", nonNilSlc == nil)
 
 	// Variadic functions
@@ -149,7 +149,7 @@ func main() {
 	}
 	other.OutputPerType(xyz)
 
-	var slcWithoutMake []int = []int{4,5}
+	var slcWithoutMake []int = []int{4, 5}
 	fmt.Println(slcWithoutMake[:][:][1])
 
 	employeeSalary := map[string]int{}
@@ -159,15 +159,15 @@ func main() {
 		fmt.Println(key, " ", value)
 	}
 	ch1, ch2 := make(chan int), make(chan int)
-	go mult(ch1, 3,4,5)
-	go sum(ch2, 3,4,5)
+	go mult(ch1, 3, 4, 5)
+	go sum(ch2, 3, 4, 5)
 	fmt.Println(<-ch1 + <-ch2)
 	time.Sleep(6 * time.Second)
 
 	// Buffered channels
 	ch3, ch4 := make(chan int, 2), make(chan int, 2)
-	go mult(ch3, 1,2,3)
-	go sum(ch4, 1,2,3)
+	go mult(ch3, 1, 2, 3)
+	go sum(ch4, 1, 2, 3)
 	fmt.Println(<-ch3 + <-ch4)
 	time.Sleep(1 * time.Second)
 
@@ -181,7 +181,6 @@ func main() {
 	ch6 := make(chan int)
 	// s := &S{a: 1, b: 2}
 	// fmt.Println(s)
-
 
 	// First value will be sent to ch5 and it will block on someone to read it but it is supposed
 	// to be read from deadSecond which will then read it and then value will be blocked to be read
@@ -197,20 +196,20 @@ func main() {
 	// ch9 := make(chan int)
 	go deadThird(ch7, ch8)
 	go deadFourth(ch8, ch7)
-	time.Sleep(1*time.Second)
+	time.Sleep(1 * time.Second)
 
 	_, err := SomeFunc(400)
 	if err != nil {
 		fmt.Println(err.Code)
 	}
 	go workersPool.WorkerPool(10)
-	go (func(){ 
+	go (func() {
 		for {
-			for i:=0; i<100; i++ {
+			for i := 0; i < 100; i++ {
 				byteUUID := uuid.New()
 				workersPool.Inputs <- workersPool.Job(workersPool.Job{Id: byteUUID.String(), Inp: rand.Int()})
 			}
-			time.Sleep(10* time.Second)
+			time.Sleep(10 * time.Second)
 		}
 	})()
 

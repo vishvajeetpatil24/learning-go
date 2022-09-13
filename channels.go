@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func sum(ch chan int, a...int){
+func sum(ch chan int, a ...int) {
 	var ans int
 	for _, v := range a {
 		ans += v
@@ -23,7 +23,7 @@ func sum(ch chan int, a...int){
 	close(ch)
 }
 
-func mult(ch chan int, a...int) {
+func mult(ch chan int, a ...int) {
 	var ans int = 1
 	for _, v := range a {
 		ans *= v
